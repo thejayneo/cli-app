@@ -1,14 +1,17 @@
-# require_relative 
+require_relative '../view/adventure'
+require_relative '../view/bank'
+require_relative '../view/store'
+require_relative '../view/leaderboard'
 
 def townOpt(input)
     case input
     when 1
-        puts "Adventure"
+        adventure
     when 2
-        puts "Bank"
+        bank
     when 3
-        puts "Store"
+        store
     when 4
-        puts "Leaderboard"
+        leaderboard
     end
 end
