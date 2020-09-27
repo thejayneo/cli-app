@@ -1,5 +1,3 @@
-require_relative 'town'
-
 system 'clear'
 puts "Welcome to 'Legend of the Ruby Dragon', a CLI remake of the famous text-based adventure game, 'Legend of the Green Dragon'."
 sleep(3)
@@ -23,5 +21,5 @@ else
     puts 'Spawning...'
     sleep(1)
     system 'clear'
-    town
+    require_relative 'town'
 end

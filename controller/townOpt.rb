@@ -3,15 +3,18 @@ require_relative '../view/bank'
 require_relative '../view/store'
 require_relative '../view/leaderboard'
 
-def townOpt(input)
-    case input
-    when 1
-        adventure
-    when 2
-        bank
-    when 3
-        store
-    when 4
-        leaderboard
+module Menu
+    def townOpt
+        case @input
+        when 1
+            ::Adventure.start
+        when 2
+            ::Bank.start
+        when 3
+            ::Store.start
+        when 4
+            ::Leaderboard.start
+        end
     end
+    module_function :townOpt
 end

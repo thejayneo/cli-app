@@ -21,6 +21,9 @@ begin
                 if dep < 0
 					system 'clear'
 					puts 'That is an invalid amount.'
+				elsif dep > @gold
+					system 'clear'
+					puts "You don't have enough gold."
 				else
                     @balance += dep
                     puts "Your balance is now #{@balance} gold."
@@ -49,5 +52,4 @@ begin
 				puts 'Invalid selection!'
             end
         end
-        # town
 end
