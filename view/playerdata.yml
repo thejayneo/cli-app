@@ -1,12 +1,11 @@
 --- !ruby/object:Player
-race: 
-playerName: Joseph
+playerName: Elissendril
 playerGold: 0
 playerBalance: 0
 stats:
-  :HP: 45
-  :Str: 40
-  :Agi: 15
+  :HP: 20
+  :Str: 10
+  :Agi: 45
   :Int: 10
-  :Dex: 10
-  :Lck: 20
+  :Dex: 30
+  :Lck: 25

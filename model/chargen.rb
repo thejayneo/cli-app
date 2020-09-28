@@ -13,9 +13,9 @@ module CharGen
 
     def race_base(input)
         case input
-        when 1 then elf
-        when 2 then human
-        when 3 then dwarf
+            when 1 then elf
+            when 2 then human
+            when 3 then dwarf
         end
     end
 
@@ -29,20 +29,14 @@ module CharGen
         when 2
             raceStat[:HP] = raceStat.fetch(:HP) + 15
             raceStat[:Str] = raceStat.fetch(:Str) + 15
-            p raceStat
-            sleep(3)
             raceStat
         when 3
             raceStat[:Agi] = raceStat.fetch(:Agi) + 15
             raceStat[:Lck] = raceStat.fetch(:Lck) + 15
-            p raceStat
-            sleep(3)
             raceStat
         when 4
             raceStat[:Dex] = raceStat.fetch(:Dex) + 15 
             raceStat[:Lck] = raceStat.fetch(:Lck) + 15
-            p raceStat
-            sleep(3)
             raceStat
         end
     end

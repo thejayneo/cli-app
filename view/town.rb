@@ -1,5 +1,7 @@
 require_relative '../controller/townOpt'
-require_relative 'playerdata'
+require 'yaml'
+# File.open("view/playerdata.yml", "r")
+# playerData = YAML.load(File.read('view/playerdata.yml'))
 
 module Town
     def self.menu
