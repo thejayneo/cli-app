@@ -9,3 +9,5 @@ class Player
         @playerLck = 0
         @playerGold = 0
         @playerBalance = 0
+    end
+end

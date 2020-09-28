@@ -2,7 +2,8 @@ require_relative '../controller/townOpt'
 
 module Town
     def self.menu
-        puts "Welcome to Hazelwood!"
+        system 'clear'
+        puts "Welcome to Hazelwood, #{@playername}!"
         puts "You see the villagers quietly going about their day as a few adventurers gather around the leaderboard."
         puts "What would you like to do? (Select 1-5)"
         puts "1. Adventure - Patrol the outskirts; be ready for a fight!"
