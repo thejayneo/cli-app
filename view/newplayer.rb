@@ -5,16 +5,17 @@ require 'yaml'
 
 module NewPlayer
     def start
-        ::NewPlayer.raceselect
-        ::NewPlayer.jobselect
+        race_select = ::NewPlayer.raceselect
+        job_select = ::NewPlayer.jobselect race_select
         system 'clear'
         puts "What is the name of your character?"
         name = gets.chomp
-        playertemp =  Player.new(name: name)
-        p playertemp
-        File.open('playerdata.yml', 'w') {|file| File.write(playertemp.to_yaml)}
+        playerNew = Player.new(name: name)
+        playerNew.race(job_select)
+        File.open('view/playerdata.yml', 'w') {|file| File.write('view/playerdata.yml', playerNew.to_yaml)}
         ::Town.menu
     end
+
     def raceselect
         system 'clear'
         puts 'What race would you like to play?'
@@ -22,10 +23,10 @@ module NewPlayer
         puts '2. Human'
         puts '3. Dwarf'
         raceinput = gets.chomp.to_i  
-        ::CharGen.race(raceinput)      
+        ::CharGen.race_base(raceinput)      
     end
 
-    def jobselect
+    def jobselect(race)
         system 'clear'
         puts 'What job would you like to play?'
         puts '1. Mage'
@@ -33,7 +34,7 @@ module NewPlayer
         puts '3. Rogue'
         puts '4. Archer'
         jobinput = gets.chomp.to_i
-        ::CharGen.job(jobinput)
+        ::CharGen.job(jobinput, race_base: race)
     end
     module_function :start, :raceselect, :jobselect
 end

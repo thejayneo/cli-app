@@ -1,0 +1,12 @@
+--- !ruby/object:Player
+race: 
+playerName: Joseph
+playerGold: 0
+playerBalance: 0
+stats:
+  :HP: 45
+  :Str: 40
+  :Agi: 15
+  :Int: 10
+  :Dex: 10
+  :Lck: 20

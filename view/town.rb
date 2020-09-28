@@ -1,4 +1,5 @@
 require_relative '../controller/townOpt'
+require_relative 'playerdata'
 
 module Town
     def self.menu
