@@ -5,7 +5,9 @@ system 'clear'
 puts "Welcome to 'Legend of the Ruby Dragon', a CLI remake of the famous text-based adventure game, 'Legend of the Green Dragon'."
 sleep(3)
 if !File.size?("playerdata")
-    puts 'No previous player data found.'
+    system 'clear'
+    puts 'No previous player data found. Starting player generation...'
+    sleep(2)
     ::NewPlayer.start
 else
     system 'clear'

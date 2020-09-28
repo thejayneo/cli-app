@@ -1,6 +1,7 @@
 require_relative '../model/chargen'
 require_relative '../model/playergen'
 require_relative 'town'
+require 'yaml'
 
 module NewPlayer
     def start
@@ -8,8 +9,10 @@ module NewPlayer
         ::NewPlayer.jobselect
         system 'clear'
         puts "What is the name of your character?"
-        name = gets
-        Player.new(name: name)
+        name = gets.chomp
+        playertemp =  Player.new(name: name)
+        p playertemp
+        File.open('playerdata.yml', 'w') {|file| File.write(playertemp.to_yaml)}
         ::Town.menu
     end
     def raceselect
