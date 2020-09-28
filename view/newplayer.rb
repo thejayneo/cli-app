@@ -10,9 +10,9 @@ module NewPlayer
         system 'clear'
         puts "What is the name of your character?"
         name = gets.chomp
-        playerNew = Player.new(name: name)
-        playerNew.race(job_select)
-        File.open('view/playerdata.yml', 'w') {|file| File.write('view/playerdata.yml', playerNew.flatten.to_yaml)}
+        player = Player.new(name: name)
+        player.race(job_select)
+        File.open('view/playerdata.yml', 'w') {|file| File.write('view/playerdata.yml', player.to_yaml)}
         ::Town.menu
     end
 

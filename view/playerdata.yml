@@ -1,11 +1,11 @@
 --- !ruby/object:Player
-playerName: Elissendril
+playerName: Mo
 playerGold: 0
 playerBalance: 0
 stats:
   :HP: 20
-  :Str: 10
-  :Agi: 45
-  :Int: 10
-  :Dex: 30
-  :Lck: 25
+  :Str: 20
+  :Agi: 25
+  :Int: 20
+  :Dex: 20
+  :Lck: 35
