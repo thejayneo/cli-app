@@ -1,6 +1,10 @@
-class CharGen(race:, job:)
+class Race
     def initalize
-        @race = race
-        @job = job 
     end
 end
+
+class Job
+    def initialize
+    end
+end
+
