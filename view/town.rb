@@ -1,12 +1,12 @@
 require_relative '../controller/townOpt'
 require 'yaml'
-# File.open("view/playerdata.yml", "r")
-# playerData = YAML.load(File.read('view/playerdata.yml'))
+File.open("view/playerdata.yml", "r")
+playerData = YAML.load('view/playerdata.yml')
 
 module Town
     def self.menu
         system 'clear'
-        puts "Welcome to Hazelwood, #{@playername}!"
+        puts "Welcome to Hazelwood, #{playerName}!"
         puts "You see the villagers quietly going about their day as a few adventurers gather around the leaderboard."
         puts "What would you like to do? (Select 1-5)"
         puts "1. Adventure - Patrol the outskirts; be ready for a fight!"

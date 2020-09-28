@@ -6,8 +6,17 @@ puts "Welcome to 'Legend of the Ruby Dragon', a CLI remake of the text-based adv
 sleep(3)
 if File.size?("view/playerdata.yml") == nil
     system 'clear'
+    puts 'No previous player data found. Starting player generation'
+    sleep(1)
+    system 'clear'
+    puts 'No previous player data found. Starting player generation.'
+    sleep(1)
+    system 'clear'
+    puts 'No previous player data found. Starting player generation..'
+    sleep(1)
+    system 'clear'
     puts 'No previous player data found. Starting player generation...'
-    sleep(2)
+    sleep(1)
     ::NewPlayer.start
 else
     system 'clear'
