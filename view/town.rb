@@ -1,21 +1,23 @@
-require_relative '../router/town'
 require 'yaml'
+require 'tty-prompt'
+require 'colorize'
+
+require_relative 'adventure'
 
 module Town
     def self.menu
         system 'clear'
         player = YAML.load(File.read("view/playerdata.yml"))
-        puts "Welcome to Hazelwood, #{player.playerName}!"
-        puts "You see the villagers quietly going about their day as a few adventurers gather around the leaderboard."
-        puts "What would you like to do? (Select 1-5)"
-        puts "1. Adventure - Patrol the outskirts; be ready for a fight!"
-        puts "2. Bank - Stow your precious gold away or make a withdrawal."
-        puts "3. Store - Purchase equipment."
-        puts "4. Leaderboard - See if you made the leaderboard!"
-        puts "5. Quit"
-        input = gets.chomp.to_i
-        # this guard statement is ugly.
-        input.between?(1,5) ? ::TownRouter.option(input) : "#{system 'clear'}, #{puts 'Invalid input'}, #{sleep(2)}, #{::Town.menu}"
+        puts "Welcome to #{'Hazelwood'.colorize(:magenta)}, #{player.playerName.colorize(:yellow)}!"
+        puts "=" * 40 + "\n"*2
+        puts "You see the villagers quietly going about their day as a few adventurers gather around the leaderboard." + "\n"*2
+        prompt = TTY::Prompt.new
+        prompt.select("What would you like to do?") do |menu|
+            menu.choice 'Adventure'.colorize(:green), -> {::Adventure.start}
+            menu.choice 'Bank'.colorize(:yellow), -> {::Bank.start}
+            menu.choice 'Store'.colorize(:blue), -> {::Store.start}
+            menu.choice 'Leaderboard'.colorize(:light_magenta), 4
+            menu.choice 'Quit'.colorize(:red), -> {!exit}
+        end
     end
 end
-
