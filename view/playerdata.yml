@@ -1,6 +1,6 @@
 --- !ruby/object:Player
 playerName: Azrael
-playerGold: 25
+playerGold: 63
 playerBalance: 0
 stats:
   :HP: 99999

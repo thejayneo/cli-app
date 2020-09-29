@@ -189,6 +189,8 @@ module CombatSim
             ::Town.menu
         elsif @currentPlayerHP < 1
             @defeat
+            loss
+            ::Town.menu
         else
             turnHandler
         end
@@ -200,7 +202,27 @@ module CombatSim
         player.playerGold += drop
         File.open('view/playerdata.yml', 'w') {|file| File.write('view/playerdata.yml', player.to_yaml)}
         puts "Congratulations, you have defeated the #{@mobName}! Rummaging their corpse you have found #{drop} gold."
+        sleep(3)
     end
 
-    module_function :turnExecute, :turnHandler, :resolve, :reward
+    def loss
+        player = YAML.load(File.read("view/playerdata.yml"))
+        player.playerGold = 0
+        File.open('view/playerdata.yml', 'w') {|file| File.write('view/playerdata.yml', player.to_yaml)}
+        puts "You have been defeated by the overwhelming power of the #{@mobName}! You have lost all the gold you were carrying."
+        sleep(3)
+        puts "Respawning"
+        sleep(2)
+        system 'clear'
+        puts "Respawning."
+        sleep(2)
+        system 'clear'
+        puts "Respawning.."
+        sleep(2)
+        system 'clear'
+        puts "Respawning..."
+        sleep(2)
+    end
+
+    module_function :turnExecute, :turnHandler, :resolve, :reward, :loss
 end
