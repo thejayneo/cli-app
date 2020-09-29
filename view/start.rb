@@ -19,8 +19,9 @@ if File.size?("view/playerdata.yml") == nil
     sleep(1)
     ::NewPlayer.start
 else
+    player = YAML.load(File.read("view/playerdata.yml"))
     system 'clear'
-    puts 'Player data located.'
+    puts "Player data located. Welcome back #{player.playerName}"
     sleep(2)
     system 'clear'
     puts 'Spawning'

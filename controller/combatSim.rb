@@ -15,36 +15,166 @@ module CombatSim
             @currentPlayerDex = playerStats.fetch(:Dex)
             @currentPlayerLck = playerStats.fetch(:Lck)
         #Load mob stats
+            @mobName = mob1.name
             mobStats = mob1.stats
             @currentMobHP = mobStats.fetch(:HP)
             @currentMobStr = mobStats.fetch(:Str)
-            @currentMobAgi = mobStats.fetch(:Agj)
+            @currentMobAgi = mobStats.fetch(:Agi)
             @currentMobInt = mobStats.fetch(:Int)
             @currentMobDex = mobStats.fetch(:Dex)
             @currentMobLck = mobStats.fetch(:Lck)
         #Decide first-turn initiative
             if @currentPlayerAgi > @currentMobAgi;
                 @turn = 'player'
+                puts "The #{@mobName} hasn't noticed you yet. You get ready to surprise attack them."
             else
                 @turn = 'mob'
+                puts "The #{@mobName} sees you and attacks you suddenly!"
             end
+        turnExecute(@turn)
     end
 
     def turnHandler
-        until victory || defeat
-            turn = (turn == 'player') ? 'mob' : 'player'
-            print_board(board)
-            player_move!(player, board)
-            winner = check_for_winner(board)
-            draw = is_draw?(board) unless winner
+        @victory = false
+        @defeat = false
+
+        until @victory || @defeat
             system 'clear'
-            break if victory || defeat
+            @turn = (@turn == 'player') ? 'mob' : 'player'
+            turnExecute(@turn)
+            break if @victory || @defeat
         end 
     end
 
-    def turnExecute
+    def turnExecute(input)
+        if input == 'mob'
+            mobAction = rand(1..3)
+            case mobAction
+            when 1
+                puts "#{@mobName} swings their weapon at you!"
+                if @currentMobDex - @currentPlayerAgi > 0
+                    if @currentMobLck - @currentPlayerLck > 9
+                        dmg = (@currentMobStr - @currentPlayerStr)*1.2
+                        @currentPlayerHP -= dmg.to_i
+                        puts "Critical hit! #{@mobName} has hit you for #{@dmg.to_i} damage!"
+                    else
+                        dmg = (@currentMobStr - @currentPlayerStr)
+                        @currentPlayerHP -= dmg.to_i
+                        puts "#{@mobName} has hit you for #{@dmg.to_i} damage!"
+                    end
+                else 
+                    puts "You're too quick for them! They missed you!"
+                end
+            when 2
+                puts "#{@mobName} casts a spell at you!"
+                if @currentMobDex - @currentPlayerAgi > 0
+                    if @currentMobLck - @currentPlayerLck > 9
+                        dmg = (@currentMobInt - @currentPlayerInt)*1.2
+                        @currentPlayerHP -= dmg.to_i
+                        puts "Critical hit! #{@mobName}'s spell has hit you for #{dmg.to_i} damage!"
+                    else
+                        dmg = (@currentMobInt - @currentPlayerInt)
+                        @currentPlayerHP -= dmg.to_i
+                        puts "#{@mobName}'s spell has hit you for #{dmg.to_i} damage!"
+                    end
+                else 
+                    puts "You're too quick for them! They missed you!"
+                end
+            when 3
+                puts "#{@mobName} aims at you with their crossbow!"
+                if @currentMobDex - @currentPlayerAgi > 0
+                    if @currentMobLck - @currentPlayerLck > 9
+                        dmg = (@currentMobDex - @currentPlayerStr)*1.2
+                        @currentPlayerHP -= dmg.to_i
+                        puts "Critical hit! #{@mobName} has hit you for #{dmg.to_i} damage!"
+                    else
+                        dmg = (@currentMobDex - @currentPlayerStr)
+                        @currentPlayerHP -= dmg.to_i
+                        puts "#{@mobName} has hit you for #{dmg.to_i} damage!"
+                    end
+                else 
+                    puts "You're too quick for them! They missed you!"
+                end
+            end
+        end
+
+        if input == 'player'
+            puts 'What would you like to do? (Select 1-4)'
+            puts '1. Melee attack'
+            puts '2. Spell attack'
+            puts '3. Ranged attack'
+            puts '4. Run away!'
+            playerAction = gets.to_i
+            system 'clear'
+            case playerAction
+            when 1
+                puts "You swing your weapon at the #{@mobName}!"
+                if @currentPlayerDex - @currentMobAgi > 0
+                    if @currentPlayerLck - @currentMobLck > 9
+                        dmg = (@currentPlayerStr - @currentMobStr)*1.2
+                        @currentMobHP -= dmg.to_i
+                        puts "Critical hit! You have cleaved the #{@mobName} for #{dmg.to_i} damage!"
+                    else
+                        dmg = (@currentPlayerStr - @currentMobStr)
+                        @currentMobHP -= dmg.to_i
+                        puts "You have struck the #{@mobName} for #{dmg.to_i} damage!"
+                    end
+                else 
+                    puts "They're too quick for you! Your weapon misses them!"
+                end
+            when 2
+                puts "You fire a spell at the #{@mobName}!"
+                if @currentPlayerDex - @currentMobAgi > 0
+                    if @currentPlayerLck - @currentMobLck > 9
+                        dmg = (@currentPlayerInt - @currentMobInt)*1.2
+                        @currentMobHP -= dmg.to_i
+                        puts "Critical hit! Your spell evisercates the #{@mobName} for #{dmg.to_i} damage! "
+                    else
+                        dmg = (@currentPlayerInt - @currentMobInt)
+                        @currentMobHP -= dmg.to_i
+                        puts "Your spell inflicted #{dmg.to_i} damage on the #{@mobName}! "
+                    end
+                else 
+                    puts "Drat! The shifty creature dodges your spell!"
+                end
+            when 3
+                puts "You notch a bolt in your crossbow and aim it at the #{@mobName}."
+                if @currentPlayerDex - @currentMobAgi > 0
+                    if @currentPlayerLck - @currentMobLck > 9
+                        dmg = (@currentPlayerDex - @currentMobStr)*1.2
+                        @currentMobHP -= dmg.to_i
+                        puts "Critical hit! Your bolt penetrates their armour! You have dealt #{dmg.to_i} damage to the #{@mobName}!"
+                    else
+                        dmg = (@currentPlayerDex - @currentMobStr)
+                        @currentMobHP -= dmg.to_i
+                        puts "Your bolt penetrates their armour! You have dealt #{dmg.to_i} damage to the #{@mobName}!"
+                    end
+                else 
+                    puts "Should have spent more time at the archery range! Your bolt whizzes past the #{@mobName} harmlessly!"
+                end
+            end
+        end
+        resolve
+    end
+
+    def resolve
+        if @currentMobHP < 1
+            @victory
+            reward
+        elsif @currentPlayerHP < 1
+            @defeat
+        else
+            turnHandler
+        end
     end
 
     def reward
+        player = YAML.load(File.read("view/playerdata.yml"))
+        drop = rand(5..20)
+        puts "Congratulations, you have defeated the #{@mobName}! Rummaging their corpse you have found #{drop} gold."
+        player.playerGold += drop
+        File.open('view/playerdata.yml', 'w') {|file| File.write('view/playerdata.yml', player.to_yaml)}
     end
+
+    module_function :turnExecute, :turnHandler, :resolve, :reward
 end

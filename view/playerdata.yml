@@ -1,11 +1,11 @@
 --- !ruby/object:Player
-playerName: Mo
-playerGold: 0
+playerName: Azrael
+playerGold: 69
 playerBalance: 600
 stats:
-  :HP: 20
-  :Str: 20
-  :Agi: 25
-  :Int: 20
-  :Dex: 20
-  :Lck: 35
+  :HP: 999
+  :Str: 99
+  :Agi: 99
+  :Int: 99
+  :Dex: 99
+  :Lck: 99
