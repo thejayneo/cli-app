@@ -114,9 +114,9 @@ module CombatSim
             prompt = TTY::Prompt.new
             prompt.select("What would you like to do?") do |menu|
                 menu.choice 'Melee Attack'.colorize(:light_red), -> {::Adventure.start}
-                menu.choice 'Cast a spell'.colorize(:light_blue), -> {::Bank.start}
-                menu.choice 'Ranger attack'.colorize(:light_yellow), -> {::Store.start}
-                menu.choice 'Run away'.colorize(:light_green), -> {::CombatSim.defeat}
+                menu.choice 'Cast a spell'.colorize(:light_yellow), -> {::Bank.start}
+                menu.choice 'Ranger attack'.colorize(:light_green), -> {::Store.start}
+                menu.choice 'Run away'.colorize(:light_blue), -> {::CombatSim.defeat}
             end
             
             puts "Player HP: #{@currentPlayerHP}"

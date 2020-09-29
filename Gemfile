@@ -12,6 +12,4 @@ gem "tty-prompt", "~> 0.22.0"
 
 gem "terminal-table", "~> 1.8"
 
-gem "uuid", "~> 2.3"
-
 gem "artii", "~> 2.1"

@@ -18,7 +18,7 @@ module NewPlayer
 
     def raceselect
         system 'clear'
-        puts 'What race would you like to play?'
+        puts 'What race would you like to play? (Select 1-3)'
         puts '1. Elf'
         puts '2. Human'
         puts '3. Dwarf'
@@ -28,7 +28,7 @@ module NewPlayer
 
     def jobselect(race)
         system 'clear'
-        puts 'What job would you like to play?'
+        puts 'What job would you like to play? (Select 1-4)'
         puts '1. Mage'
         puts '2. Knight'
         puts '3. Rogue'

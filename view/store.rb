@@ -1,25 +1,39 @@
 
 module Store
     def self.start
+        system 'clear'
         player = YAML.load(File.read("view/playerdata.yml"))
-		gold = player.playerGold.to_i
-        puts "Welcome to Hephy's Forge!"
-        puts "What would you like to buy today?"
-        puts "1. Weapons"
-        puts "2. Armour"
-        puts '3. "Not buying today, just want to look around boss."'
-        store_opt = gets.to_i
-        case store_opt
-            when 1 then weapons
-            when 2 then armour
-            when 3 then leave
-            else
-                system 'clear'
-                puts "Huh? Are you alright there? Let me repeat myself..."
-                sleep(2)
-                ::Store.start
+        @gold = player.playerGold.to_i
+        puts "Welcome to Hephy's Forge!" + "\n" + "=" * 40 + "\n"*2
+        menu
+    end
+
+    def menu
+        prompt = TTY::Prompt.new
+        prompt.select("What wouldd you like to buy today?") do |menu|
+            menu.choice 'Weapons'.colorize(:light_red), -> {::Store.weapons}
+            menu.choice 'Armour'.colorize(:light_yellow), -> {::Bank.start}
+            menu.choice '"Not buying today, just want to look around!"'.colorize(:light_blue), -> {::Store.start}
         end
     end
+
+
+    #     puts "What would you like to buy today?"
+    #     puts "1. Weapons"
+    #     puts "2. Armour"
+    #     puts '3. "Not buying today, just want to look around boss."'
+    #     store_opt = gets.to_i
+    #     case store_opt
+    #         when 1 then weapons
+    #         when 2 then armour
+    #         when 3 then leave
+    #         else
+    #             system 'clear'
+    #             puts "Huh? Are you alright there? Let me repeat myself..."
+    #             sleep(2)
+    #             ::Store.start
+    #     end
+    # end
     
 
     def weapons
@@ -43,5 +57,5 @@ module Store
     def leave
     end
 
-    module_function :weapons, :armour, :leave
+    module_function :weapons, :armour, :leave, :menu
 end

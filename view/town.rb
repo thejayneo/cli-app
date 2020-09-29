@@ -1,6 +1,7 @@
 require 'yaml'
 require 'tty-prompt'
 require 'colorize'
+require 'artii'
 
 require_relative 'adventure'
 require_relative 'bank'
@@ -20,7 +21,19 @@ module Town
             menu.choice 'Bank'.colorize(:yellow), -> {::Bank.start}
             menu.choice 'Store'.colorize(:blue), -> {::Store.start}
             menu.choice 'Leaderboard'.colorize(:light_magenta), 4
-            menu.choice 'Quit'.colorize(:red), -> {!exit}
+            menu.choice 'Quit'.colorize(:red), -> {::Town.quit}
         end
     end
+
+    def quit
+        system 'clear'
+        player = YAML.load(File.read("view/playerdata.yml"))
+        system 'clear'
+        titleStyle = Artii::Base.new :font => 'slant'
+        puts "Thanks for playing! See you next time," +"\n"*4 + "#{(titleStyle.asciify(player.playerName)).colorize(:yellow)}"
+        sleep(3)
+        exit!
+    end
+
+    module_function :quit
 end
