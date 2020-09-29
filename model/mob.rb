@@ -5,7 +5,7 @@ class Mob
     def initialize
     end
 
-    def stats
+    def statsGen
         # Mob race generation
         race_select = rand(1..3)
         mob_race = ::CharGen.race_base(race_select)
@@ -20,5 +20,9 @@ class Mob
 
     def name
         @name
+    end
+
+    def stats
+        @stats
     end
 end
