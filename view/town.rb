@@ -4,7 +4,6 @@ require 'yaml'
 module Town
     def self.menu
         system 'clear'
-        File.open("view/playerdata.yml", "r")
         player = YAML.load(File.read("view/playerdata.yml"))
         puts "Welcome to Hazelwood, #{player.playerName}!"
         puts "You see the villagers quietly going about their day as a few adventurers gather around the leaderboard."

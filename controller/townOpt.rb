@@ -1,4 +1,4 @@
-# require_relative '../view/adventure'
+require_relative '../view/adventure'
 require_relative '../view/bank'
 # require_relative '../view/store'
 # require_relative '../view/leaderboard'
@@ -8,7 +8,6 @@ module Router
         system 'clear'
         case input
         when 1
-            puts 'adventure'
             ::Adventure.start
         when 2
             ::Bank.start
