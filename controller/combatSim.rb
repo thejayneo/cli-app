@@ -54,7 +54,7 @@ module CombatSim
             case mobAction
             when 1
                 puts "#{@mobName} swings their weapon at you!"
-                if @currentMobDex - @currentPlayerAgi > 0
+                if @currentMobDex - @currentPlayerAgi + rand(1..10) > 0
                     if @currentMobLck - @currentPlayerLck > 9
                         dmg = (@currentMobStr - @currentPlayerStr)*1.2
                         @currentPlayerHP -= dmg.to_i
@@ -69,7 +69,7 @@ module CombatSim
                 end
             when 2
                 puts "#{@mobName} casts a spell at you!"
-                if @currentMobDex - @currentPlayerAgi > 0
+                if @currentMobDex - @currentPlayerAgi + rand(1..10) > 0
                     if @currentMobLck - @currentPlayerLck > 9
                         dmg = (@currentMobInt - @currentPlayerInt)*1.2
                         @currentPlayerHP -= dmg.to_i
@@ -84,7 +84,7 @@ module CombatSim
                 end
             when 3
                 puts "#{@mobName} aims at you with their crossbow!"
-                if @currentMobDex - @currentPlayerAgi > 0
+                if @currentMobDex - @currentPlayerAgi + rand(1..10) > 0
                     if @currentMobLck - @currentPlayerLck > 9
                         dmg = (@currentMobDex - @currentPlayerStr)*1.2
                         @currentPlayerHP -= dmg.to_i
@@ -108,10 +108,12 @@ module CombatSim
             puts '4. Run away!'
             playerAction = gets.to_i
             system 'clear'
+            puts "Player HP: #{@currentPlayerHP}"
+            puts "Mob HP: #{@currentMobHP}"
             case playerAction
             when 1
                 puts "You swing your weapon at the #{@mobName}!"
-                if @currentPlayerDex - @currentMobAgi > 0
+                if @currentPlayerDex - @currentMobAgi + rand(1..10) > 0
                     if @currentPlayerLck - @currentMobLck > 9
                         dmg = (@currentPlayerStr - @currentMobStr)*1.2
                         @currentMobHP -= dmg.to_i
@@ -126,7 +128,7 @@ module CombatSim
                 end
             when 2
                 puts "You fire a spell at the #{@mobName}!"
-                if @currentPlayerDex - @currentMobAgi > 0
+                if @currentPlayerDex - @currentMobAgi + rand(1..10) > 0
                     if @currentPlayerLck - @currentMobLck > 9
                         dmg = (@currentPlayerInt - @currentMobInt)*1.2
                         @currentMobHP -= dmg.to_i
@@ -141,7 +143,7 @@ module CombatSim
                 end
             when 3
                 puts "You notch a bolt in your crossbow and aim it at the #{@mobName}."
-                if @currentPlayerDex - @currentMobAgi > 0
+                if @currentPlayerDex - @currentMobAgi + rand(1..10) > 0
                     if @currentPlayerLck - @currentMobLck > 9
                         dmg = (@currentPlayerDex - @currentMobStr)*1.2
                         @currentMobHP -= dmg.to_i

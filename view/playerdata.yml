@@ -1,10 +1,6 @@
-require_relative 'view/adventure.rb'
-
-::Adventure.start
-
 --- !ruby/object:Player
 playerName: Azrael
-playerGold: 69
+playerGold: 156
 playerBalance: 600
 stats:
   :HP: 999
