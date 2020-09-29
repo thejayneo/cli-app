@@ -1,3 +1,3 @@
-require_relative 'view/store'
+require_relative 'view/leaderboard'
 
-::Store.start
+::Leaderboard.start
