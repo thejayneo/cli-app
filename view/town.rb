@@ -3,6 +3,9 @@ require 'tty-prompt'
 require 'colorize'
 
 require_relative 'adventure'
+require_relative 'bank'
+require_relative 'store'
+require_relative 'leaderboard'
 
 module Town
     def self.menu
