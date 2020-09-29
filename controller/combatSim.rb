@@ -159,16 +159,16 @@ module CombatSim
             when 4
                 system 'clear'
                 puts "You attempt to run away"
-                sleep(2)
+                sleep(1)
                 system 'clear'
                 puts "You attempt to run away."
-                sleep(2)
+                sleep(1)
                 system 'clear'
                 puts "You attempt to run away.."
-                sleep(2)
+                sleep(1)
                 system 'clear'
                 puts "You attempt to run away..."
-                sleep(2)
+                sleep(1)
                 if @currentPlayerAgi + rand(1..10) > @currentMobHP
                     puts "You got away safely!"
                     sleep(3)

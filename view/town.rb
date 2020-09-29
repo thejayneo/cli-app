@@ -1,4 +1,4 @@
-require_relative '../controller/townOpt'
+require_relative '../router/town'
 require 'yaml'
 
 module Town
@@ -15,7 +15,7 @@ module Town
         puts "5. Quit"
         input = gets.chomp.to_i
         # this guard statement is ugly.
-        input.between?(1,5) ? ::Router.option(input) : "#{system 'clear'}, #{puts 'Invalid input'}, #{sleep(2)}, #{::Town.menu}"
+        input.between?(1,5) ? ::TownRouter.option(input) : "#{system 'clear'}, #{puts 'Invalid input'}, #{sleep(2)}, #{::Town.menu}"
     end
 end
 

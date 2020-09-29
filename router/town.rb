@@ -1,9 +1,9 @@
 require_relative '../view/adventure'
 require_relative '../view/bank'
-# require_relative '../view/store'
+require_relative '../view/store'
 # require_relative '../view/leaderboard'
 
-module Router
+module TownRouter
     def self.option(input)
         system 'clear'
         case input
