@@ -12,7 +12,6 @@ module TownRouter
         when 2
             ::Bank.start
         when 3
-            puts 'store'
             ::Store.start
         when 4
             puts 'leaderboard'
