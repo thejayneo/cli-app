@@ -1,11 +1,13 @@
 --- !ruby/object:Player
 playerName: Azrael
-playerGold: 80
-playerBalance: 6000
+playerGold: 96900
+playerBalance: 0
+playerWeapon: :Tree Branch (Int + 10)
+playerArmour: :Paper Bag (HP + 10, Dex - 5)
 stats:
-  :HP: 99999
+  :HP: 100009
   :Str: 999
   :Agi: 999
-  :Int: 1014
-  :Dex: 1014
+  :Int: 1024
+  :Dex: 1009
   :Lck: 999

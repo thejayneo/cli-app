@@ -1,3 +1,3 @@
-require_relative 'view/adventure'
+require_relative 'view/store'
 
-::Adventure.start
+::Store.start
