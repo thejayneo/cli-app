@@ -15,8 +15,8 @@ module Town
         puts "5. Quit"
         input = gets.chomp.to_i
         # need to figure out guard statement
-        # puts input == 1...5 ? townOpt(input) : "Invalid input. Please try again."
-        ::Router.option(input)
+        input.between?(1,5) ? ::Router.option(input) : "#{system 'clear'}, #{puts 'Invalid input'}, #{sleep(2)}, #{::Town.menu}"
+        # ::Router.option(input)
     end
 end
 

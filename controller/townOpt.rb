@@ -17,6 +17,8 @@ module Router
         when 4
             puts 'leaderboard'
             ::Leaderboard.start
+        when 5
+            exit!
         end
     end   
 end

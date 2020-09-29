@@ -54,7 +54,7 @@ module CombatSim
             case mobAction
             when 1
                 puts "#{@mobName} swings their weapon at you!"
-                if @currentMobDex - @currentPlayerAgi + rand(1..10) > 0
+                if @currentMobDex - @currentPlayerAgi + rand(1..10) > 0 
                     if @currentMobLck - @currentPlayerLck > 9
                         dmg = (@currentMobStr - @currentPlayerStr)*1.2
                         @currentPlayerHP -= dmg.to_i
@@ -156,6 +156,22 @@ module CombatSim
                 else 
                     puts "Should have spent more time at the archery range! Your bolt whizzes past the #{@mobName} harmlessly!"
                 end
+            when 4
+                puts "You attempt to run away"
+                system 'clear'
+                puts "You attempt to run away."
+                system 'clear'
+                puts "You attempt to run away.."
+                system 'clear'
+                puts "You attempt to run away..."
+                if @currentPlayerAgi + rand(1..10) > @currentMobHP
+                    puts "You safely got away!"
+                    sleep(3)
+                    # break
+                    # ::Town.menu
+                else
+                    puts "Too slow! The #{mobName} caught up to you!"
+                end
             end
         end
         sleep(5)
@@ -166,6 +182,7 @@ module CombatSim
         if @currentMobHP < 1
             @victory
             reward
+            ::Town.menu
         elsif @currentPlayerHP < 1
             @defeat
         else
@@ -176,9 +193,9 @@ module CombatSim
     def reward
         player = YAML.load(File.read("view/playerdata.yml"))
         drop = rand(5..20)
-        puts "Congratulations, you have defeated the #{@mobName}! Rummaging their corpse you have found #{drop} gold."
         player.playerGold += drop
         File.open('view/playerdata.yml', 'w') {|file| File.write('view/playerdata.yml', player.to_yaml)}
+        puts "Congratulations, you have defeated the #{@mobName}! Rummaging their corpse you have found #{drop} gold."
     end
 
     module_function :turnExecute, :turnHandler, :resolve, :reward
