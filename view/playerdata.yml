@@ -1,11 +1,15 @@
+require_relative 'view/adventure.rb'
+
+::Adventure.start
+
 --- !ruby/object:Player
 playerName: Azrael
 playerGold: 69
 playerBalance: 600
 stats:
   :HP: 999
-  :Str: 99
-  :Agi: 99
-  :Int: 99
-  :Dex: 99
-  :Lck: 99
+  :Str: 30
+  :Agi: 30
+  :Int: 30
+  :Dex: 30
+  :Lck: 30

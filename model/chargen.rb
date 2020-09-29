@@ -19,7 +19,7 @@ module CharGen
         end
     end
 
-    def job(input, race_base)
+    def job(input, race_base:)
         raceStat = {}.merge(race_base)
         case input
         when 1

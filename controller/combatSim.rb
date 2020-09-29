@@ -27,9 +27,11 @@ module CombatSim
             if @currentPlayerAgi > @currentMobAgi;
                 @turn = 'player'
                 puts "The #{@mobName} hasn't noticed you yet. You get ready to surprise attack them."
+                sleep(3)
             else
                 @turn = 'mob'
                 puts "The #{@mobName} sees you and attacks you suddenly!"
+                sleep(3)
             end
         turnExecute(@turn)
     end
@@ -154,6 +156,7 @@ module CombatSim
                 end
             end
         end
+        sleep(5)
         resolve
     end
 

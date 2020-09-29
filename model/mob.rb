@@ -11,7 +11,7 @@ class Mob
         mob_race = ::CharGen.race_base(race_select)
         # Mob job selection + race stats passed through
         job_select = rand(1..4)
-        @stats = ::CharGen.job(job_select, mob_race)
+        @stats = ::CharGen.job(job_select, race_base: mob_race)
         #Mob name
         race_array = ['Elven', 'Human', 'Dwarven']
         job_array = ['Mage', 'Knight', 'Rogue', 'Archer']
