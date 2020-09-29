@@ -4,6 +4,8 @@ playerGold: 96900
 playerBalance: 0
 playerWeapon: :Tree Branch (Int + 10)
 playerArmour: :Paper Bag (HP + 10, Dex - 5)
+achievement:
+- Narcissist
 stats:
   :HP: 100009
   :Str: 999

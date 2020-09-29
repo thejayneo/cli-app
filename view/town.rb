@@ -12,14 +12,14 @@ module Town
     def self.menu
         system 'clear'
         player = YAML.load(File.read("view/playerdata.yml"))
-        puts "Welcome to #{'Hazelwood'.colorize(:magenta)}, #{player.playerName.colorize(:yellow)}!" + "=" * 40 + "\n"*2
+        puts "Welcome to #{'Hazelwood'.colorize(:magenta)}, #{player.playerName.colorize(:yellow)}!" + "\n" + "=" * 40 + "\n"*2
         puts "You see the villagers quietly going about their day as a few adventurers gather around the leaderboard." + "\n"*2
         prompt = TTY::Prompt.new
         prompt.select("What would you like to do?") do |menu|
             menu.choice 'Adventure'.colorize(:green), -> {::Adventure.start}
             menu.choice 'Bank'.colorize(:yellow), -> {::Bank.start}
             menu.choice 'Store'.colorize(:blue), -> {::Store.start}
-            menu.choice 'Leaderboard'.colorize(:light_magenta), 4
+            menu.choice 'Leaderboard'.colorize(:light_magenta), -> {::Leaderboard.start}
             menu.choice 'Quit'.colorize(:red), -> {::Town.quit}
         end
     end
