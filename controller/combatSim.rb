@@ -157,20 +157,24 @@ module CombatSim
                     puts "Should have spent more time at the archery range! Your bolt whizzes past the #{@mobName} harmlessly!"
                 end
             when 4
+                system 'clear'
                 puts "You attempt to run away"
+                sleep(2)
                 system 'clear'
                 puts "You attempt to run away."
+                sleep(2)
                 system 'clear'
                 puts "You attempt to run away.."
+                sleep(2)
                 system 'clear'
                 puts "You attempt to run away..."
+                sleep(2)
                 if @currentPlayerAgi + rand(1..10) > @currentMobHP
-                    puts "You safely got away!"
+                    puts "You got away safely!"
                     sleep(3)
-                    # break
-                    # ::Town.menu
+                    ::Town.menu
                 else
-                    puts "Too slow! The #{mobName} caught up to you!"
+                    puts "Too slow! The #{@mobName} caught up to you!"
                 end
             end
         end

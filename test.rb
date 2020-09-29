@@ -1,3 +1,3 @@
-require_relative 'view/town'
+require_relative 'view/adventure'
 
-::Town.menu
+::Adventure.start

@@ -11,11 +11,27 @@ module CharGen
         {HP: 30, Str: 25, Agi: 15, Int: 10, Dex: 10, Lck: 20}
     end
 
+    def god
+        {HP: 99999, Str: 999, Agi: 999, Int: 999, Dex: 999, Lck: 999}
+    end
+
     def race_base(input)
         case input
             when 1 then elf
             when 2 then human
             when 3 then dwarf
+            when 777 then god
+                system 'clear'
+                puts 'Holiest number recognized. GOD MODE ACTIVATED.'
+                sleep(3)
+                system 'clear'
+                god
+            else 
+                system 'clear'
+                puts "Invalid input. Please select a valid option (1-3)."
+                sleep(3)
+                system 'clear'
+                ::NewPlayer.raceselect
         end
     end
 
@@ -40,6 +56,6 @@ module CharGen
             raceStat
         end
     end
-    module_function :race_base, :job, :elf, :human, :dwarf
+    module_function :race_base, :job, :elf, :human, :dwarf, :god
 end
 
