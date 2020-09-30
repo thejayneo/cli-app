@@ -6,16 +6,17 @@ require 'terminal-table'
 
 require_relative 'town'
 require_relative '../model/player'
+require_relative '../controller/leaderboardController'
 
 
 module Leaderboard
     def self.start
         system 'clear'
         puts "Adventurer Scoreboard" + "\n" + "=" * 40 + "\n"*2
-        @narcissist = 0
+        narcissist = 0
         loadIn
         render_board
-        menu
+        ::LeaderboardController.menu(narcissist)
     end
 
     def loadIn
@@ -53,21 +54,5 @@ module Leaderboard
         puts table
     end
 
-    def menu
-        if (@narcissist > 3 && @achievement.include?('Narcissist') == false)
-            @achievement << 'Narcissist'
-            @player.achievements = @achievement
-            File.open('model/playerdata.yml', 'w') {|file| File.write('model/playerdata.yml', @player.to_yaml)}
-            Leaderboard::start
-        else
-            @narcissist += 1
-        end
-        prompt = TTY::Prompt.new
-        prompt.select("Are you done mirin'?") do |menu|
-            menu.choice "Yeah, let's get back to it...".colorize(:green), -> {::Town.menu}
-            menu.choice "Nah, not yet...".colorize(:red), -> {::Leaderboard.menu}
-        end
-    end
-
-    module_function :loadIn, :render_board, :menu
+    module_function :loadIn, :render_board
 end
