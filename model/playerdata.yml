@@ -1,7 +1,7 @@
 --- !ruby/object:Player
 name: Azrael
-gold: 4450
-balance: 200
+gold: 4650
+balance: 0
 weapon: :Sling Shot (Dex + 10)
 armour: :Cardboard Box (HP + 10, Str + 5)
 achievements:

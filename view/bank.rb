@@ -1,66 +1,95 @@
+require 'yaml'
+require 'colorize'
+
 require_relative 'town'
+require_relative '../controller/bankController.rb'
 
 module Bank
 	def self.start
 		system 'clear'
-        player = YAML.load(File.read("model/playerdata.yml"))
-		balance = player.balance
-		gold = player.gold
-		puts "#{player.name}, welcome to Hazelwood bank!"
-			active = true
-			while active == true
-				puts 'What would you like to do today?'
-				puts '1. Check my balance.'
-				puts '2. Make a deposit.'
-				puts '3. Make a withdrawal.'
-				puts '4. Leave the bank.'
-				op = gets.chomp.to_i
-				if op == 1
-					system 'clear'
-					puts "You are carrying #{gold} gold and your bank balance is #{balance} gold."
-				elsif op == 2
-					system 'clear'
-					puts 'How much would you like to deposit?'
-					dep = gets.to_i
-					if dep < 0
-						system 'clear'
-						puts 'That is an invalid amount.'
-					elsif dep > gold
-						system 'clear'
-						puts "You don't have enough gold."
-					else
-						balance += dep
-						gold -= dep
-						puts "Your balance is now #{balance} gold."
-					end
-				elsif op == 3
-					system 'clear'
-					puts 'How much would you like to withdraw today?'
-					wdw = gets.to_i
-					if wdw > balance
-						system 'clear'
-						puts 'You have insufficient funds!'
-					elsif wdw < 0
-						system 'clear'
-						puts 'That is an invalid amount.'
-					else
-						system 'clear'
-						balance -=wdw
-						gold += wdw
-						puts "You have withdrawn #{wdw} gold. Your balance is now #{balance} gold."
-					end
-				elsif op == 4
-					system 'clear'
-					player.balance = balance
-					player.gold = gold
-					File.open('model/playerdata.yml', 'w') {|file| File.write('model/playerdata.yml', player.to_yaml)}
-					puts "Take care out there, #{player.name}"
-					active=false
-					::Town.menu
-				else
-					system 'clear'
-					puts 'Invalid selection!'
-				end
+        @player = YAML.load(File.read("model/playerdata.yml"))
+		puts "#{@player.name.colorize(:yellow)}, welcome to Hazelwood bank!"
+		sleep(3)
+		menu
+	end
+
+	def menu 
+		system 'clear'
+	 	puts "Hazelwood Bank" + "\n" + "=" * 40 + "\n"*2
+		prompt = TTY::Prompt.new
+        prompt.select("How can we be of service?") do |menu|
+            menu.choice 'Check my balance'.colorize(:green), -> {::Bank.balance}
+            menu.choice 'Make a deposit'.colorize(:yellow), -> {::Bank.depositMenu}
+            menu.choice 'Make a withdrawal'.colorize(:blue), -> {::Bank.withdrawMenu}
+            menu.choice 'Leave the bank'.colorize(:red), -> {::Bank.leave}
 		end
 	end
+
+	def balance
+		system 'clear'
+        player = YAML.load(File.read("model/playerdata.yml"))
+        gold = player.gold
+		balance = player.balance
+		puts "Hazelwood Bank => Balance" + "\n" + "=" * 40 + "\n"*2
+        puts "You are currently holding #{gold} gold and have #{balance} gold stored with us."
+        sleep(3)
+        ::Bank.menu
+    end
+
+	def withdrawMenu
+		system 'clear'
+		puts "Hazelwood Bank => Withdraw Gold" + "\n" + "=" * 40 + "\n"*2
+		puts "How much would you like to withdraw?"
+		wdw = gets.chomp.to_i
+		::BankController.withdraw(wdw)
+	end
+
+	def withdrawConfirm(wdw, gold, balance)
+		system 'clear'
+		puts "Hazelwood Bank => Withdrawn Gold" + "\n" + "=" * 40 + "\n"*2
+		puts "You have successfully withdrawn #{wdw} gold. You are now holding #{gold} gold and have #{balance} gold stored with us."
+		sleep(3)
+		::Bank.menu
+	end
+
+	def depositMenu
+		system 'clear'
+		puts "Hazelwood Bank => Deposit Gold" + "\n" + "=" * 40 + "\n"*2
+		puts "How much would you like to deposit?"
+		dep = gets.chomp.to_i
+		::BankController.deposit(dep)
+	end
+
+	def depositConfirm(dep, gold, balance)
+		system 'clear'
+		puts "Hazelwood Bank => Deposited Gold" + "\n" + "=" * 40 + "\n"*2
+		puts "You have successfully deposited #{dep} gold. You are now holding #{gold} gold and have #{balance} gold stored with us."
+		sleep(3)
+		::Bank.menu
+	end
+
+	def deficit
+		system 'clear'
+		puts "Hazelwood Bank" + "\n" + "=" * 40 + "\n"*2
+		puts "You do not have enough gold for this transaction!"
+		sleep(3)
+		::Bank.menu
+	end
+
+	def invalid
+		system 'clear'
+		puts "Hazelwood Bank" + "\n" + "=" * 40 + "\n"*2
+		puts "That is not a valid amount for this transaction!"
+		sleep(3)
+		::Bank.menu
+	end
+
+	def leave
+		system 'clear'
+		puts "Hazelwood Bank" + "\n" + "=" * 40 + "\n"*2
+		puts "Take care out there, #{@player.name.colorize(:yellow)}"
+		sleep(3)
+		::Town.menu
+	end
+	module_function :leave, :menu, :withdrawMenu, :depositMenu, :balance, :deficit, :invalid, :withdrawConfirm, :depositConfirm
 end
