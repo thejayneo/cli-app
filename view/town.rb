@@ -19,7 +19,7 @@ module Town
         prompt.select("What would you like to do?") do |menu|
             menu.choice 'Adventure'.colorize(:green), -> {::Adventure.start}
             menu.choice 'Bank'.colorize(:yellow), -> {::Bank.start}
-            menu.choice 'Store'.colorize(:blue), -> {::Store.start}
+            menu.choice 'Store'.colorize(:blue), -> {::Store.menu}
             menu.choice 'Leaderboard'.colorize(:light_magenta), -> {::Leaderboard.start}
             menu.choice 'Quit'.colorize(:red), -> {::Town.quit}
         end
