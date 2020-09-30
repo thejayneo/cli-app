@@ -3,7 +3,7 @@ require 'tty-prompt'
 require 'colorize'
 require 'artii'
 
-require_relative '../model/playergen.rb'
+require_relative '../model/player.rb'
 require_relative 'town'
 
 module Store
@@ -52,15 +52,15 @@ module Store
     def weapons_buy(item)
         system 'clear'
         puts "Hephy's Forge -> Weapons Menu -> Weapon Purchase" + "\n" + "=" * 40 + "\n"*2
-        player = YAML.load(File.read("view/playerdata.yml"))
-        gold = player.playerGold
-        weapon = player.playerWeapon
+        player = YAML.load(File.read("model/playerdata.yml"))
+        gold = player.gold
+        weapon = player.weapon
         # playerStats = player.stats
-        str = player.stats.fetch(:Str)
-        int = player.stats.fetch(:Int)
-        agi = player.stats.fetch(:Agi)
-        dex = player.stats.fetch(:Dex)
-        lck = player.stats.fetch(:Lck)
+        str = player.str
+        int = player.int
+        agi = player.agi
+        dex = player.dex
+        lck = player.lck
         cost = @weap_stats.fetch(item).fetch(:cost).to_i
             if cost > gold
                 puts 'Hephy looks at you and says, "Hey, hey! I\'m not running a charity here!"'
@@ -85,14 +85,14 @@ module Store
                 gold -= cost
                 weapon = item
             end
-        player.playerGold = gold
-        player.playerWeapon = weapon
-        player.stats[:Str] = str
-        player.stats[:Agi] = agi
-        player.stats[:Dex] = dex
-        player.stats[:Int] = int
-        player.stats[:Lck] = lck
-        File.open('view/playerdata.yml', 'w') {|file| File.write('view/playerdata.yml', player.to_yaml)}
+        player.gold = gold
+        player.weapon = weapon
+        player.str = str
+        player.agi = agi
+        player.dex = dex
+        player.int = int
+        player.lck = lck
+        File.open('model/playerdata.yml', 'w') {|file| File.write('model/playerdata.yml', player.to_yaml)}
         sleep(3)
         ::Store.menu
     end
@@ -127,15 +127,15 @@ module Store
     def armour_buy(item)
         system 'clear'
         puts "Hephy's Forge -> Armours Menu -> Armour Purchase" + "\n" + "=" * 40 + "\n"*2
-        player = YAML.load(File.read("view/playerdata.yml"))
-        gold = player.playerGold
-        armour = player.playerArmour
-        hp = player.stats.fetch(:HP)
-        str = player.stats.fetch(:Str)
-        int = player.stats.fetch(:Int)
-        agi = player.stats.fetch(:Agi)
-        dex = player.stats.fetch(:Dex)
-        lck = player.stats.fetch(:Lck)
+        player = YAML.load(File.read("model/playerdata.yml"))
+        gold = player.gold
+        armour = player.armour
+        hp = player.hp
+        str = player.str
+        int = player.int
+        agi = player.agi
+        dex = player.dex
+        lck = player.lck
         cost = @arm_stats.fetch(item).fetch(:cost).to_i
             if cost > gold
                 puts 'Hephy looks at you and says, "Hey, hey! I\'m not running a charity here!"'
@@ -162,15 +162,15 @@ module Store
                 gold -= cost
                 armour = item
             end
-        player.playerGold = gold
-        player.playerArmour = armour
-        player.stats[:HP] = hp
-        player.stats[:Str] = str
-        player.stats[:Agi] = agi
-        player.stats[:Dex] = dex
-        player.stats[:Int] = int
-        player.stats[:Lck] = lck
-        File.open('view/playerdata.yml', 'w') {|file| File.write('view/playerdata.yml', player.to_yaml)}
+        player.gold = gold
+        player.armour = armour
+        player.hp = hp
+        player.str = str
+        player.agi = agi
+        player.dex = dex
+        player.int = int
+        player.lck = lck
+        File.open('model/playerdata.yml', 'w') {|file| File.write('model/playerdata.yml', player.to_yaml)}
         sleep(3)
         ::Store.menu
     end
@@ -185,9 +185,9 @@ module Store
 
     def leave
         system 'clear'
-        player = YAML.load(File.read("view/playerdata.yml"))
+        player = YAML.load(File.read("model/playerdata.yml"))
         puts "Hephy's Forge" + "\n" + "=" * 40 + "\n"*2
-        puts "Stay alive out there, #{player.playerName.colorize(:yellow)}!"
+        puts "Stay alive out there, #{player.name.colorize(:yellow)}!"
         sleep(3)
         ::Town.menu
     end

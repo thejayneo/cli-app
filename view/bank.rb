@@ -2,11 +2,11 @@ require_relative 'town'
 
 module Bank
 	def self.start
-		# File.open("view/playerdata.yml", "r")
-        player = YAML.load(File.read("view/playerdata.yml"))
-		balance = player.playerBalance.to_i
-		gold = player.playerGold.to_i
-		puts "#{player.playerName}, welcome to Hazelwood bank!"
+		system 'clear'
+        player = YAML.load(File.read("model/playerdata.yml"))
+		balance = player.balance
+		gold = player.gold
+		puts "#{player.name}, welcome to Hazelwood bank!"
 			active = true
 			while active == true
 				puts 'What would you like to do today?'
@@ -51,10 +51,10 @@ module Bank
 					end
 				elsif op == 4
 					system 'clear'
-					player.playerBalance = balance
-					player.playerGold = gold
-					File.open('view/playerdata.yml', 'w') {|file| File.write('view/playerdata.yml', player.to_yaml)}
-					puts "Take care out there, #{player.playerName}"
+					player.balance = balance
+					player.gold = gold
+					File.open('model/playerdata.yml', 'w') {|file| File.write('model/playerdata.yml', player.to_yaml)}
+					puts "Take care out there, #{player.name}"
 					active=false
 					::Town.menu
 				else

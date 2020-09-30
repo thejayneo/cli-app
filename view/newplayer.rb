@@ -1,40 +1,41 @@
-require_relative '../model/chargen'
-require_relative '../model/playergen'
+require_relative '../controller/playergen'
 require_relative 'town'
 require 'yaml'
 
 module NewPlayer
     def start
-        race_select = ::NewPlayer.raceselect
-        job_select = ::NewPlayer.jobselect race_select
-        system 'clear'
-        puts "What is the name of your character?"
-        name = gets.chomp
-        player = Player.new(name: name)
-        player.race(job_select)
-        File.open('view/playerdata.yml', 'w') {|file| File.write('view/playerdata.yml', player.to_yaml)}
+        playerName
+        raceOptions
+        jobOptions
         ::Town.menu
     end
 
-    def raceselect
+    def playerName
+        system 'clear'
+        puts "What is the name of your character?"
+        name = gets.chomp
+        ::PlayerGen.playerName(name)
+    end
+
+    def raceOptions
         system 'clear'
         puts 'What race would you like to play? (Select 1-3)'
         puts '1. Elf'
         puts '2. Human'
         puts '3. Dwarf'
         raceinput = gets.chomp.to_i  
-        ::CharGen.race_base(raceinput)      
+        ::PlayerGen.race(raceinput) 
     end
 
-    def jobselect(race)
+    def jobOptions
         system 'clear'
         puts 'What job would you like to play? (Select 1-4)'
         puts '1. Mage'
         puts '2. Knight'
         puts '3. Rogue'
-        puts '4. Archer'
+        puts '4. Ranger'
         jobinput = gets.chomp.to_i
-        ::CharGen.job(jobinput, race_base: race)
+        ::PlayerGen.job(jobinput)
     end
-    module_function :start, :raceselect, :jobselect
+    module_function :start, :raceOptions, :jobOptions, :playerName
 end

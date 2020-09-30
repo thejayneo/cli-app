@@ -4,7 +4,7 @@ require 'colorize'
 
 require_relative '../view/town'
 require_relative '../view/adventure'
-require_relative '../model/playergen'
+require_relative '../controller/playergen'
 
 module CombatSim
     def self.start(mob1)

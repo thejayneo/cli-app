@@ -1,0 +1,14 @@
+--- !ruby/object:Player
+name: Azrael
+gold: 5100
+balance: 200
+weapon: :Tree Branch (Int + 10)
+armour: :Fishing Net (HP + 15, Agi - 5)
+achievements:
+- Narcissist
+hp: 100014
+str: 999
+agi: 994
+int: 1024
+dex: 1014
+lck: 999

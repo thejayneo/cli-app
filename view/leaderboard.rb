@@ -5,7 +5,7 @@ require 'artii'
 require 'terminal-table'
 
 require_relative 'town'
-require_relative '../model/playergen'
+require_relative '../model/player'
 
 
 module Leaderboard
@@ -19,19 +19,19 @@ module Leaderboard
     end
 
     def loadIn
-        @player = YAML.load(File.read("view/playerdata.yml"))
-        @name = @player.playerName
-        @gold = @player.playerGold
-        @balance = @player.playerBalance
-        @weapon = @player.playerWeapon
-        @armour = @player.playerArmour
-        @hp = @player.stats.fetch(:HP)
-        @str = @player.stats.fetch(:Str)
-        @int = @player.stats.fetch(:Int)
-        @agi = @player.stats.fetch(:Agi)
-        @dex = @player.stats.fetch(:Dex)
-        @lck = @player.stats.fetch(:Lck)
-        @achievement = @player.achievement
+        @player = YAML.load(File.read("model/playerdata.yml"))
+        @name = @player.name
+        @gold = @player.gold
+        @balance = @player.balance
+        @weapon = @player.weapon
+        @armour = @player.armour
+        @hp = @player.hp
+        @str = @player.str
+        @int = @player.int
+        @agi = @player.agi
+        @dex = @player.dex
+        @lck = @player.lck
+        @achievement = @player.achievements
     end
 
     def render_board
@@ -56,8 +56,8 @@ module Leaderboard
     def menu
         if (@narcissist > 3 && @achievement.include?('Narcissist') == false)
             @achievement << 'Narcissist'
-            @player.achievement = @achievement
-            File.open('view/playerdata.yml', 'w') {|file| File.write('view/playerdata.yml', @player.to_yaml)}
+            @player.achievements = @achievement
+            File.open('model/playerdata.yml', 'w') {|file| File.write('model/playerdata.yml', @player.to_yaml)}
             Leaderboard::start
         else
             @narcissist += 1

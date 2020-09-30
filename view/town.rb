@@ -12,8 +12,8 @@ require_relative '../model/townevent'
 module Town
     def self.menu
         system 'clear'
-        player = YAML.load(File.read("view/playerdata.yml"))
-        puts "Welcome to #{'Hazelwood'.colorize(:magenta)}, #{player.playerName.colorize(:yellow)}!" + "\n" + "=" * 40 + "\n"*2
+        player = YAML.load(File.read("model/playerdata.yml"))
+        puts "Welcome to #{'Hazelwood'.colorize(:magenta)}, #{player.name.colorize(:yellow)}!" + "\n" + "=" * 40 + "\n"*2
         puts townEvent + "\n"*2
         prompt = TTY::Prompt.new
         prompt.select("What would you like to do?") do |menu|
@@ -27,10 +27,10 @@ module Town
 
     def quit
         system 'clear'
-        player = YAML.load(File.read("view/playerdata.yml"))
+        player = YAML.load(File.read("model/playerdata.yml"))
         system 'clear'
         titleStyle = Artii::Base.new :font => 'slant'
-        puts "Thanks for playing! See you next time," +"\n"*4 + "#{(titleStyle.asciify(player.playerName)).colorize(:yellow)}"
+        puts "Thanks for playing! See you next time," +"\n"*4 + "#{(titleStyle.asciify(player.name)).colorize(:yellow)}"
         sleep(3)
         exit!
     end

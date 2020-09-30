@@ -1,28 +1,75 @@
-require_relative 'CharGen'
+require_relative 'job'
 
-class Mob
-    attr_accessor :stats
-    def initialize
+class Mob < Job
+    attr_reader :name
+    attr_accessor :gold, :balance, :weapon, :armour, :achievements, :hp, :str, :dex, :int, :lck, :agi
+    
+    def raceGen
+        @racePick = rand(1..3)
+        case @racePick
+            when 1 
+                elf
+            when 2 
+                human
+            when 3 
+                dwarf
+        end
     end
 
-    def statsGen
-        # Mob race generation
-        race_select = rand(1..3)
-        mob_race = ::CharGen.race_base(race_select)
-        # Mob job selection + race stats passed through
-        job_select = rand(1..4)
-        @stats = ::CharGen.job(job_select, race_base: mob_race)
-        #Mob name
-        race_array = ['Elven', 'Human', 'Dwarven']
-        job_array = ['Mage', 'Knight', 'Rogue', 'Archer']
-        @name = race_array[(race_select) - 1].to_s + " " + job_array[(job_select) - 1].to_s
+    def jobGen
+        @jobPick = rand(1..4)
+        case @jobPick
+            when 1 
+                mage
+            when 2
+                knight
+            when 3 
+                rogue
+            when 4
+                ranger
+        end
     end
 
     def name
-        @name
+        race_array = ['Elven', 'Human', 'Dwarven']
+        job_array = ['Mage','Knight','Rogue','Ranger']
+        @name = race_array[@racePick - 1] + " " + job_array[@jobPick - 1]
     end
 
-    def stats
-        @stats
+    def elf
+        super
+    end
+
+    def human
+        super
+    end
+
+    def dwarf
+        super
+    end
+
+    def god
+        super
+    end
+
+    def beast
+        super
+    end
+    
+    def mage
+        super
+    end
+
+    def knight
+        super
+    end
+
+    def rogue
+        super
+    end
+
+    def ranger
+        super
     end
 end
+
