@@ -59,11 +59,11 @@ module CombatSim
                 puts "#{@mobName.colorize(:red)} swings their weapon at you!"
                 if @currentMobDex - @currentPlayerAgi + rand(1..10) > 0 
                     if @currentMobLck - @currentPlayerLck > 9
-                        dmg = (@currentMobStr - @currentPlayerStr)*1.2
+                        (@currentMobStr - @currentPlayerStr) > 0 ? dmg = (@currentMobStr - @currentPlayerStr)*1.2 : dmg = 0
                         @currentPlayerHP -= dmg.to_i
                         puts "Critical hit! #{@mobName.colorize(:red)} has hit you for #{@dmg.to_i} damage!"
                     else
-                        dmg = (@currentMobStr - @currentPlayerStr)
+                        (@currentMobStr - @currentPlayerStr) > 0 ? dmg = (@currentMobStr - @currentPlayerStr) : dmg = 0
                         @currentPlayerHP -= dmg.to_i
                         puts "#{@mobName.colorize(:red)} has hit you for #{@dmg.to_i} damage!"
                     end
@@ -74,11 +74,11 @@ module CombatSim
                 puts "#{@mobName.colorize(:red)} casts a spell at you!"
                 if @currentMobDex - @currentPlayerAgi + rand(1..10) > 0
                     if @currentMobLck - @currentPlayerLck > 9
-                        dmg = (@currentMobInt - @currentPlayerInt)*1.2
+                        (@currentMobInt - @currentPlayerInt) > 0 ? dmg = (@currentMobInt - @currentPlayerInt)*1.2 : dmg = 0
                         @currentPlayerHP -= dmg.to_i
                         puts "Critical hit! #{@mobName.colorize(:red)}'s spell has hit you for #{dmg.to_i} damage!"
                     else
-                        dmg = (@currentMobInt - @currentPlayerInt)
+                        (@currentMobInt - @currentPlayerInt) > 0 ? dmg = (@currentMobInt - @currentPlayerInt) : dmg = 0
                         @currentPlayerHP -= dmg.to_i
                         puts "#{@mobName.colorize(:red)}'s spell has hit you for #{dmg.to_i} damage!"
                     end
@@ -89,11 +89,11 @@ module CombatSim
                 puts "#{@mobName.colorize(:red)} aims at you with their crossbow!"
                 if @currentMobDex - @currentPlayerAgi + rand(1..10) > 0
                     if @currentMobLck - @currentPlayerLck > 9
-                        dmg = (@currentMobDex - @currentPlayerStr)*1.2
+                        (@currentMobDex - @currentPlayerStr) > 0 ? dmg = (@currentMobDex - @currentPlayerStr)*1.2 : dmg = 0
                         @currentPlayerHP -= dmg.to_i
                         puts "Critical hit! #{@mobName.colorize(:red)} has hit you for #{dmg.to_i} damage!"
                     else
-                        dmg = (@currentMobDex - @currentPlayerStr)
+                        (@currentMobDex - @currentPlayerStr) > 0 ? dmg = (@currentMobDex - @currentPlayerStr) : dmg = 0
                         @currentPlayerHP -= dmg.to_i
                         puts "#{@mobName.colorize(:red)} has hit you for #{dmg.to_i} damage!"
                     end
@@ -104,20 +104,20 @@ module CombatSim
         end
 
         if input == 'player'
-            # puts 'What would you like to do? (Select 1-4)'
-            # puts '1. Melee attack'
-            # puts '2. Spell attack'
-            # puts '3. Ranged attack'
-            # puts '4. Run away!'
-            # playerAction = gets.to_i
-            # system 'clear'
-            prompt = TTY::Prompt.new
-            prompt.select("What would you like to do?") do |menu|
-                menu.choice 'Melee Attack'.colorize(:light_red), -> {::Adventure.start}
-                menu.choice 'Cast a spell'.colorize(:light_yellow), -> {::Bank.start}
-                menu.choice 'Ranger attack'.colorize(:light_green), -> {::Store.start}
-                menu.choice 'Run away'.colorize(:light_blue), -> {::CombatSim.defeat}
-            end
+            puts 'What would you like to do? (Select 1-4)'
+            puts '1. Melee attack'
+            puts '2. Spell attack'
+            puts '3. Ranged attack'
+            puts '4. Run away!'
+            playerAction = gets.to_i
+            system 'clear'
+            # prompt = TTY::Prompt.new
+            # prompt.select("What would you like to do?") do |menu|
+            #     menu.choice 'Melee Attack'.colorize(:light_red), -> {::Adventure.start}
+            #     menu.choice 'Cast a spell'.colorize(:light_yellow), -> {::Bank.start}
+            #     menu.choice 'Ranger attack'.colorize(:light_green), -> {::Store.start}
+            #     menu.choice 'Run away'.colorize(:light_blue), -> {::CombatSim.defeat}
+            # end
             
             puts "Player HP: #{@currentPlayerHP}"
             puts "Mob HP: #{@currentMobHP}"
@@ -126,11 +126,11 @@ module CombatSim
                 puts "You swing your weapon at the #{@mobName.colorize(:red)}!"
                 if @currentPlayerDex - @currentMobAgi + rand(1..10) > 0
                     if @currentPlayerLck - @currentMobLck > 9
-                        dmg = (@currentPlayerStr - @currentMobStr)*1.2
+                        (@currentPlayerStr - @currentMobStr) > 0 ? dmg= (@currentPlayerStr - @currentMobStr)*1.2 : dmg = 0
                         @currentMobHP -= dmg.to_i
                         puts "Critical hit! You have cleaved the #{@mobName.colorize(:red)} for #{dmg.to_i} damage!"
                     else
-                        dmg = (@currentPlayerStr - @currentMobStr)
+                        (@currentPlayerStr - @currentMobStr) > 0 ? dmg = (@currentPlayerStr - @currentMobStr) : dmg = 0
                         @currentMobHP -= dmg.to_i
                         puts "You have struck the #{@mobName.colorize(:red)} for #{dmg.to_i} damage!"
                     end
@@ -141,11 +141,11 @@ module CombatSim
                 puts "You fire a spell at the #{@mobName.colorize(:red)}!"
                 if @currentPlayerDex - @currentMobAgi + rand(1..10) > 0
                     if @currentPlayerLck - @currentMobLck > 9
-                        dmg = (@currentPlayerInt - @currentMobInt)*1.2
+                        (@currentPlayerInt - @currentMobInt) > 0 ? dmg = (@currentPlayerInt - @currentMobInt)*1.2 : dmg = 0
                         @currentMobHP -= dmg.to_i
                         puts "Critical hit! Your spell evisercates the #{@mobName.colorize(:red)} for #{dmg.to_i} damage! "
                     else
-                        dmg = (@currentPlayerInt - @currentMobInt)
+                        (@currentPlayerInt - @currentMobInt) > 0 ? dmg = (@currentPlayerInt - @currentMobInt) : dmg = 0
                         @currentMobHP -= dmg.to_i
                         puts "Your spell inflicted #{dmg.to_i} damage on the #{@mobName.colorize(:red)}! "
                     end
@@ -156,11 +156,11 @@ module CombatSim
                 puts "You notch a bolt in your crossbow and aim it at the #{@mobName.colorize(:red)}."
                 if @currentPlayerDex - @currentMobAgi + rand(1..10) > 0
                     if @currentPlayerLck - @currentMobLck > 9
-                        dmg = (@currentPlayerDex - @currentMobStr)*1.2
+                        (@currentPlayerDex - @currentMobStr) > 0 ? dmg = (@currentPlayerDex - @currentMobStr)*1.2 : dmg = 0
                         @currentMobHP -= dmg.to_i
                         puts "Critical hit! Your bolt penetrates their armour! You have dealt #{dmg.to_i} damage to the #{@mobName.colorize(:red)}!"
                     else
-                        dmg = (@currentPlayerDex - @currentMobStr)
+                        (@currentPlayerDex - @currentMobStr) > 0 ? dmg = (@currentPlayerDex - @currentMobStr) : dmg = 0
                         @currentMobHP -= dmg.to_i
                         puts "Your bolt penetrates their armour! You have dealt #{dmg.to_i} damage to the #{@mobName.colorize(:red)}!"
                     end
@@ -209,7 +209,7 @@ module CombatSim
 
     def reward
         player = YAML.load(File.read("view/playerdata.yml"))
-        drop = rand(5..20)
+        drop = rand(500..1000)
         player.playerGold += drop
         File.open('view/playerdata.yml', 'w') {|file| File.write('view/playerdata.yml', player.to_yaml)}
         puts "Congratulations, you have defeated the #{@mobName.colorize(:red)}! Rummaging their corpse you have found #{drop} gold."

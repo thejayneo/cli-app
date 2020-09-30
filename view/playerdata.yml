@@ -1,15 +1,14 @@
 --- !ruby/object:Player
-playerName: Azrael
-playerGold: 96900
+playerName: Bezelbub
+playerGold: 0
 playerBalance: 0
-playerWeapon: :Tree Branch (Int + 10)
-playerArmour: :Paper Bag (HP + 10, Dex - 5)
-achievement:
-- Narcissist
+playerWeapon: 
+playerArmour: 
+achievement: []
 stats:
-  :HP: 100009
-  :Str: 999
-  :Agi: 999
-  :Int: 1024
-  :Dex: 1009
-  :Lck: 999
+  :HP: 66681
+  :Str: 681
+  :Agi: 666
+  :Int: 666
+  :Dex: 666
+  :Lck: 666

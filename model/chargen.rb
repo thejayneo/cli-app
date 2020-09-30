@@ -15,14 +15,24 @@ module CharGen
         {HP: 99999, Str: 999, Agi: 999, Int: 999, Dex: 999, Lck: 999}
     end
 
+    def beast
+        {HP: 66666, Str: 666, Agi: 666, Int: 666, Dex: 666, Lck: 666}
+    end
+
     def race_base(input)
         case input
             when 1 then elf
             when 2 then human
             when 3 then dwarf
-            when 777 then god
+            when 666 
                 system 'clear'
-                puts 'Holiest number recognized. GOD MODE ACTIVATED.'
+                puts 'Number of the Beast acknowledged. BEAST MODE ACTIVATED.'
+                sleep(3)
+                system 'clear'
+                beast
+            when 777 
+                system 'clear'
+                puts 'Holiest number acknowledged. GOD MODE ACTIVATED.'
                 sleep(3)
                 system 'clear'
                 god
@@ -56,6 +66,5 @@ module CharGen
             raceStat
         end
     end
-    module_function :race_base, :job, :elf, :human, :dwarf, :god
+    module_function :race_base, :job, :elf, :human, :dwarf, :god, :beast
 end
-

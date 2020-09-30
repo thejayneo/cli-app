@@ -63,7 +63,7 @@ module Store
         lck = player.stats.fetch(:Lck)
         cost = @weap_stats.fetch(item).fetch(:cost).to_i
             if cost > gold
-                puts "Hey, hey! I'm not running a charity here!"
+                puts 'Hephy looks at you and says, "Hey, hey! I\'m not running a charity here!"'
                 sleep(3)
                 system 'clear'
                 ::Store.menu
@@ -138,7 +138,7 @@ module Store
         lck = player.stats.fetch(:Lck)
         cost = @arm_stats.fetch(item).fetch(:cost).to_i
             if cost > gold
-                puts "Hey, hey! I'm not running a charity here!"
+                puts 'Hephy looks at you and says, "Hey, hey! I\'m not running a charity here!"'
                 sleep(3)
                 system 'clear'
                 ::Store.menu
