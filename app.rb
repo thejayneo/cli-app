@@ -1,5 +1,6 @@
 require_relative 'view/town'
 require_relative 'view/newplayer'
+require_relative 'controller/check'
 require 'colorize'
 require 'artii'
 
@@ -11,37 +12,4 @@ puts titleStyle.asciify('               Ruby').colorize(:red)
 puts titleStyle.asciify('            Dragon')
 puts "\n"*2 + "A CLI remake of the text-based adventure game, #{"'Legend of the Green Dragon' (LotGD)".colorize(:green)}."
 sleep(5)
-if File.size?("model/playerdata.yml") == nil
-    system 'clear'
-    puts 'No previous player data found. Starting player generation'
-    sleep(1)
-    system 'clear'
-    puts 'No previous player data found. Starting player generation.'
-    sleep(1)
-    system 'clear'
-    puts 'No previous player data found. Starting player generation..'
-    sleep(1)
-    system 'clear'
-    puts 'No previous player data found. Starting player generation...'
-    sleep(1)
-    ::NewPlayer.start
-else
-    player = YAML.load(File.read("model/playerdata.yml"))
-    system 'clear'
-    puts "Player data located. Welcome back," +"\n"*4 + "#{(titleStyle.asciify(player.name)).colorize(:yellow)}"
-    sleep(3)
-    system 'clear'
-    puts 'Spawning'
-    sleep(1)
-    system 'clear'
-    puts 'Spawning.'
-    sleep(1)
-    system 'clear'
-    puts 'Spawning..'
-    sleep(1)
-    system 'clear'
-    puts 'Spawning...'
-    sleep(1)
-    system 'clear'
-    ::Town.menu
-end
+::Check.playerData
