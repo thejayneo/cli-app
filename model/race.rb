@@ -43,6 +43,7 @@ class Race
         @int = 999
         @dex = 999
         @lck = 999
+        @achievements = ["Surreee you're a god. Cheater."]
     end
 
     def beast
@@ -52,5 +53,6 @@ class Race
         @int = 666
         @dex = 666
         @lck = 666
+        @achievements = ["A beast. At cheating."]
     end
 end

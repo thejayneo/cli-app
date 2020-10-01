@@ -7,14 +7,14 @@ require_relative 'adventure'
 require_relative 'bank'
 require_relative 'store'
 require_relative 'leaderboard'
-require_relative '../model/townevent'
+require_relative '../model/events'
 
 module Town
     def self.menu
         system 'clear'
         player = YAML.load(File.read("model/playerdata.yml"))
         puts "Welcome to #{'Hazelwood'.colorize(:magenta)}, #{player.name.colorize(:yellow)}!" + "\n" + "=" * 40 + "\n"*2
-        puts townEvent + "\n"*2
+        puts ::Events.town + "\n"*2
         prompt = TTY::Prompt.new
         prompt.select("What would you like to do?") do |menu|
             menu.choice 'Adventure'.colorize(:green), -> {::Adventure.start}

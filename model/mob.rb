@@ -30,7 +30,7 @@ class Mob < Job
         end
     end
 
-    def name
+    def nameGen
         race_array = ['Elven', 'Human', 'Dwarven']
         job_array = ['Mage','Knight','Rogue','Ranger']
         @name = race_array[@racePick - 1] + " " + job_array[@jobPick - 1]

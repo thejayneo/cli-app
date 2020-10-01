@@ -1,14 +1,15 @@
 --- !ruby/object:Player
-name: Azrael
-gold: 4650
-balance: 0
-weapon: :Sling Shot (Dex + 10)
+name: Meh
+gold: 85
+balance: 110
+weapon: :Sharpened Stake (Str + 10)
 armour: :Cardboard Box (HP + 10, Str + 5)
 achievements:
+- A beast. At cheating.
 - Narcissist
-hp: 100009
-str: 1004
-agi: 999
-int: 1014
-dex: 1024
-lck: 999
+hp: 66691
+str: 696
+agi: 666
+int: 666
+dex: 666
+lck: 666

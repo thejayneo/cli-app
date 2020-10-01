@@ -1,14 +1,22 @@
 require_relative '../model/mob'
-require_relative '../controller/combatSim'
-require_relative 'town'
+require_relative '../controller/combatController'
+require_relative '../controller/adventureController'
+require_relative '../model/events'
+# require_relative 'town'
 
 module Adventure
     def self.start
         system 'clear'
-        mob1 = ::Mob.new
-        mob1.statsGen
-        puts "You walk through the woods and you hear a rustling sound ahead. You move foward cautiously and find a #{mob1.name.colorize(:red)}."
+		puts "Adventure" + "\n" + "=" * 40 + "\n"*2
+        puts "You walk through the woods and hear a rustling sound ahead..."
         sleep(3)
-        ::CombatSim.start(mob1)
+        ::AdventureController.eventDecider
     end
+
+    def event
+        puts "#{::Events.adventure}"
+        sleep(3)
+        ::Town.menu
+    end
+    module_function :event
 end

@@ -50,7 +50,7 @@ module Leaderboard
         @achievement == [] ? nil : rows << ['Achievements:', @achievement]
 
         titleStyle = Artii::Base.new :font => 'slant'
-        table = Terminal::Table.new :title => "#{(titleStyle.asciify(@name)).colorize(:yellow)}", :headings => ['Stat', 'Points'], :rows => rows, :style => {:width => 60} 
+        table = Terminal::Table.new :title => "#{(titleStyle.asciify(@name)).colorize(:yellow)}", :headings => ['Stat', 'Points'], :rows => rows
         puts table
     end
 

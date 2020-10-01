@@ -68,6 +68,7 @@ module Store
         system 'clear'
         puts "Hephy's Forge" + "\n" + "=" * 40 + "\n"*2
         puts "Hephy growls at you, \"Does it look like I'm running a charity here?\""
+        puts "You should probably come back when you have enough gold on you."
         sleep(3)
         ::Store.menu
     end

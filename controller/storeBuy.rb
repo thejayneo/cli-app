@@ -76,12 +76,12 @@ module Buy
                     lck += arm_stats.fetch(item).fetch(:playerLck) - arm_stats.fetch(armour).fetch(:playerLck)
                     puts "You discarded your #{armour} and put on the shiny #{item}!"
                 else
-                    hp += @arm_stats.fetch(item).fetch(:playerHP)
-                    str += @arm_stats.fetch(item).fetch(:playerStr)
-                    agi += @arm_stats.fetch(item).fetch(:playerAgi)
-                    int += @arm_stats.fetch(item).fetch(:playerInt)
-                    dex += @arm_stats.fetch(item).fetch(:playerDex)
-                    lck += @arm_stats.fetch(item).fetch(:playerLck)
+                    hp += arm_stats.fetch(item).fetch(:playerHP)
+                    str += arm_stats.fetch(item).fetch(:playerStr)
+                    agi += arm_stats.fetch(item).fetch(:playerAgi)
+                    int += arm_stats.fetch(item).fetch(:playerInt)
+                    dex += arm_stats.fetch(item).fetch(:playerDex)
+                    lck += arm_stats.fetch(item).fetch(:playerLck)
                     puts "You put on the #{item}. It's good to be less naked!"
                 end
                 gold -= cost

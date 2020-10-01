@@ -38,7 +38,7 @@ module BankController
         player.gold = gold
         player.balance = balance
         File.open('model/playerdata.yml', 'w') {|file| File.write('model/playerdata.yml', player.to_yaml)}
-        ::Bank.withdrawConfirm(dep, player.gold, player.balance)
+        ::Bank.depositConfirm(dep, player.gold, player.balance)
     end
     module_function :withdraw, :deposit
 end
