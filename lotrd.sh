@@ -6,5 +6,4 @@ sudo gem install tty-prompt
 sudo gem install terminal-table
 sudo gem install rspec
 sudo gem install artii
-
 ruby lotrd.rb

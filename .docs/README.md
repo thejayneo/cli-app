@@ -53,7 +53,16 @@ Hardware Requirements:
 
 Software Requirements:
 * *nix OS
-* 
+* Ruby
+
+Instructions:
+1. Create/Navigate to directory where you want to install application in terminal.
+
+2. Run:
+
+```git clone https://github.com/thejayneo/cli-app```
+
+3. Run:
 
 design help documentaiton which includes a set of instructions which accurately descibe how to use and install the application
 you must include steps to install the application
