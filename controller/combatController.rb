@@ -5,12 +5,8 @@ require 'colorize'
 require_relative '../model/mob'
 require_relative '../view/combatView'
 
-# require_relative '../view/town'
-
 module CombatSim
     def self.start
-        # @victory = false
-        # @defeat = false
         mob1 = ::Mob.new
         mob1.raceGen
         mob1.jobGen
@@ -99,10 +95,6 @@ module CombatSim
         ::CombatView.playerTurnResolve(@playerAction, dmg, @currentMobHP)
     end
 
-    # def mobTurn
-    #     ::CombatSim.mobHit
-    # end
-        
     def escapeCheck
         @turn = 'player'
         if @currentPlayerAgi + rand(1..20) > @currentMobAgi
@@ -113,18 +105,13 @@ module CombatSim
     end
 
     def turnHandler
-        # until @victory || @defeat
             @turn == 'player' ? ::CombatView.mobTurn : ::CombatView.playerTurn
-        #     break if @victory || @defeat
-        # end 
     end
 
     def roundResolve
         if @currentMobHP < 1
-            # @victory
             reward
         elsif @currentPlayerHP < 1
-            # @defeat
             loss
         else
             turnHandler

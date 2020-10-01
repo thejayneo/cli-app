@@ -2,9 +2,13 @@
 
 A text-based adventure CLI application inspired by Legend of the Green Dragon (LotGD).
 
-### **GitHub Respository**
+### **GitHub**
 
-[GitHub](https://www.github.com/thejayneo/cli-app)
+[GitHub Remote Repo](https://www.github.com/thejayneo/cli-app)
+
+### **Trello**
+
+[Trello Board](https://trello.com/b/LUZCBm3l/cli-app)
 
 ## **Software Development Plan**
 
@@ -28,8 +32,9 @@ The user will then either generate a character for the first time or resume thei
 
 - Adventure mode: The user character will be matched against randomly-generated enemies and turn-based combat simulation based on character and opponent stats will be carried out with user input at every turn (For example: 'Attack', 'Cast spell', 'Run away'.)
 
-- bank to safely store accrued currency in the event of character death,
-- a leaderboard to see their best progress.
+- Bank mode: To safely store accrued gold in the event of character death.
+
+- Leaderboard/scoreboard to see their best progress.
 
 * develop a list of feratures that will be included in the application. It must include: at least three features, describe each feature
 
