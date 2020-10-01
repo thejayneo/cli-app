@@ -1,15 +1,13 @@
 --- !ruby/object:Player
-name: Meh
-gold: 85
-balance: 110
-weapon: :Sharpened Stake (Str + 10)
-armour: :Cardboard Box (HP + 10, Str + 5)
-achievements:
-- A beast. At cheating.
-- Narcissist
-hp: 66691
-str: 696
-agi: 666
-int: 666
-dex: 666
-lck: 666
+name: ''
+gold: 0
+balance: 0
+weapon: 
+armour: 
+achievements: []
+hp: 20
+str: 10
+agi: 30
+int: 25
+dex: 45
+lck: 10

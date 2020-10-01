@@ -13,3 +13,5 @@ gem "tty-prompt", "~> 0.22.0"
 gem "terminal-table", "~> 1.8"
 
 gem "artii", "~> 2.1"
+
+gem "rspec", "~> 3.9"
