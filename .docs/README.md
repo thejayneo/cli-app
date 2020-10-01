@@ -6,10 +6,6 @@ A text-based adventure CLI application inspired by Legend of the Green Dragon (L
 
 [GitHub Remote Repo](https://www.github.com/thejayneo/cli-app)
 
-### **Trello**
-
-[Trello Board](https://trello.com/b/LUZCBm3l/cli-app)
-
 ## **Software Development Plan**
 
 ### **Purpose and Scope**
@@ -36,28 +32,28 @@ The user will then either generate a character for the first time or resume thei
 
 - Leaderboard/scoreboard to see their best progress.
 
-* develop a list of feratures that will be included in the application. It must include: at least three features, describe each feature
+### **User Interaction:**
 
-  Ensure that your features above allow you to demonstrate your understanding of the following language elements and concepts:
+Character generation will ask the user to input an integer within a range to select character race and job class. This input method was used as it allows the incorporation of certain easter eggs. `Case`, `when` and `else` statements are used to validate inputs in the character generation section and bank deposit and withdraw features to handle errors and provide an informative feedback to the user.
 
-  use of variables and concept of the variable scope
-  loops and conditional control structures
-  error handling
+All other user interactions will be displayed, captured and managed using the select menu from Ruby Gem TTY-Prompt. This serves as input instruction as it renders a directive for users to use the up and down arrow keys to navigate the menu, and input validation/error handling as the user cannot make an invalid input.
 
-* develop an outline of the user interaction and experience for the application.
-  your aoutline must include:
-  how the user will find out how to interact with use each each feature
-  how the user will interact with use each feature how errors will be handled by the application and displayed to the user
+### **Control Flow Diagram**
 
-develop a diagram which describe the control flow of your application.
-your diagram must:
-show the workflow/logic and or integration of the features in your application for each feature
-utiulise a format or set of convestions for a control flow diagram such as UML
+### **Implementation Plan**
 
-develop an implementation plan which outlines how each feature will be oimplemenhted and a checklist of tasks for each feature
-prioritise the implmentation of different features or checklist items within a feature provide a deadline duration or other time indication for each featture or checklist/checklist item
-TRELLO
-checklists for each feature should have at least 5 items
+[Trello Board](https://trello.com/b/LUZCBm3l/cli-app)
+
+### **Installation Instructions**
+
+Hardware Requirements:
+* Computer
+* Keyboard
+* Monitor
+
+Software Requirements:
+* *nix OS
+* 
 
 design help documentaiton which includes a set of instructions which accurately descibe how to use and install the application
 you must include steps to install the application

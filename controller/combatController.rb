@@ -97,7 +97,7 @@ module CombatSim
 
     def escapeCheck
         @turn = 'player'
-        if @currentPlayerAgi + rand(1..20) > @currentMobAgi
+        if @currentPlayerAgi + rand(1..30) > @currentMobAgi
             ::CombatView.escapeSuccess
         else
             ::CombatView.escapeFail
@@ -120,7 +120,7 @@ module CombatSim
 
     def reward
         player = YAML.load(File.read("model/playerdata.yml"))
-        drop = rand(500..1000)
+        drop = rand(20..200)
         player.gold += drop
         File.open('model/playerdata.yml', 'w') {|file| File.write('model/playerdata.yml', player.to_yaml)}
         ::CombatView.victory(drop)
